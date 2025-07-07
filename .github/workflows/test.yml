@@ -28,7 +28,12 @@ jobs:
       - name: Copy .env.example to .env
         run: cp ./1-integration-test/.env.example ./1-integration-test/.env
 
-      - name: Make integration script executable
-        run: chmod +x ./1-integration-test/scripts/run-integration.sh
+      - name: Make integration scripts executable
+        run: |
+          chmod +x ./1-integration-test/scripts/run-integration.sh
+          chmod +x ./1-integration-test/scripts/wait-for-it.sh
+
+      - name: Install dependencies
+        run: cd 1-integration-test && npm ci
       - name: Run integration script
         run: cd 1-integration-test && npm run test:integration

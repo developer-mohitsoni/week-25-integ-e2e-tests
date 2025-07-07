@@ -1,4 +1,4 @@
-docker-compose up -d
+docker compose up -d
 echo '🟡 - Waiting for database to be ready...'
 ./scripts/wait-for-it.sh "postgresql://postgres:mysecretpassword@localhost:5431/postgres" -- echo '🟢 - Database is ready!'
 npx prisma migrate dev --name init
